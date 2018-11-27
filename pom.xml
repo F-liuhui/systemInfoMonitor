@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cnpc</groupId>
+  <artifactId>systeminfomonitor</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>SystemInfoMonitor</name>
+  <description>System usage statistics</description>
+   <!-- springboot父工程 -->
+   <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.6.RELEASE</version>
+   </parent>
+   <!-- 属性配置 -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- TO Support JDK 1.8 start -->
+        <java.version>1.8</java.version>
+        <jetty.version>9.3</jetty.version>
+        <sigar.version>1.6.4</sigar.version>
+        <commons-io.version>2.6</commons-io.version>
+        <jodd.version>3.5.2</jodd.version>
+        <redis.version>2.9.0</redis.version>
+	</properties>
+	<dependencies>
+		<!-- web依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<!-- springboot redis 驱动程序 -->
+		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-data-redis</artifactId>
+	    </dependency>
+		
+		<!-- 日志依赖 -->
+		<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-logging</artifactId>
+			</dependency>
+			
+		<!-- 序列化对象的依赖 -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.51</version>
+		</dependency>
+		
+		<!-- sigar资源监控 -->
+        <dependency> 
+			<groupId>org.fusesource</groupId> 
+			<artifactId>sigar</artifactId> 
+			<version>${sigar.version}</version> 
+		</dependency> 
+		<!-- 工具包 -->
+		<dependency>           
+	         <groupId>commons-io</groupId>    
+			 <artifactId>commons-io</artifactId>   
+			 <version>${commons-io.version}</version>        
+        </dependency>
+        <!-- jodd包，有许多好用的File工具包和sysytem工具包等 -->
+        <dependency>
+		    <groupId>org.jodd</groupId>
+		    <artifactId>jodd-core</artifactId>
+		    <version>${jodd.version}</version>
+		</dependency>
+		<!-- springboot 测试 不需要-->
+	   <!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency> -->
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+			     <!-- spring boot打包成 JAR文件或者WAR文件的插件  -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
